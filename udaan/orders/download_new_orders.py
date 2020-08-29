@@ -78,6 +78,33 @@ def _parse_orders(orders_file):
             line_count += 1
     return orders
 
+def parse_orders_csv_dict(orders_file):
+    orders = dict()
+    order_keys = ['Date', 'Order-Id', 'Order Type', 'Order Status', 'Seller Org Name', 'Buyer Name', 'Buyer Org Name', 'Buyer Mobile Number', 'GSTIN', 'Buyer City', 'Buyer State', 'Buyer Org Address', 'Invoice Id', 'AWB Num', 'Logistic Partner']
+    with open(orders_file) as csv_file:
+        csv_reader = csv.DictReader(csv_file, delimiter=',')
+        for row in csv_reader:
+            if None in row.keys():
+                row['SetContent'] = row[None]
+                del row[None]
+            for k in row.keys():
+                if isinstance(row[k], type([])):
+                    for a in range(len(row[k])):
+                        if not row[k][a]:
+                            row[k][a] = None
+                elif not row[k]:
+                    row[k] = None
+
+            order_id = row['Order-Id']
+            if order_id in orders:
+                order_details = orders[order_id]
+            else:
+                order_details = {k: row[k] for k in row if k in order_keys}
+                orders[order_id] = order_details
+                order_details['items'] = []
+            order_details['items'].append(row)
+    return orders
+
 
 def fetch_orders(past):
     orders_file = download_orders(past)
