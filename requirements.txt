@@ -1,0 +1,6 @@
+httplib2==0.12.0
+certifi==2018.11.29
+requests
+git+https://github.com/deepubansal/books-python-wrappers#egg=zohobooks-python-0.0.1
+openpyxl
+

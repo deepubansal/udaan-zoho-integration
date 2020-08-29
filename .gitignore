@@ -1,0 +1,7 @@
+venv/
+.idea/
+*.pyc
+secret_file.json
+
+core/set_env.py
+zoho/core/constants.py
