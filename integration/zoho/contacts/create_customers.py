@@ -1,9 +1,8 @@
-from zoho import *
+from integration.zoho import *
 from books.model.Contact import Contact
 from books.model.ContactPerson import ContactPerson
 from books.model.Address import Address
 from books.exception.BooksException import BooksException
-
 
 contact_api = zoho_books.get_contacts_api()
 

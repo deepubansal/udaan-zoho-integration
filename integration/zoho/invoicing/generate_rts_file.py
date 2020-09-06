@@ -1,4 +1,4 @@
-from zoho import *
+from integration.zoho import *
 from openpyxl import Workbook
 from datetime import datetime
 

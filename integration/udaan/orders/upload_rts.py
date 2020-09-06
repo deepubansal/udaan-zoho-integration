@@ -1,5 +1,5 @@
-from udaan import get_auth_token, requests
-from core import home
+from integration.udaan import get_auth_token, requests
+from integration import home
 from time import sleep
 
 headers = {'authorization': 'Bearer {}'.format(get_auth_token())}

@@ -1,6 +1,6 @@
-from zoho.core.api_helpers import create_bill
+from integration.zoho.core.api_helpers import create_bill
 from books.model.LineItem import LineItem
-from zoho import *
+from integration.zoho import *
 import datetime
 
 

@@ -1,4 +1,4 @@
-from zoho import *
+from integration.zoho import *
 from books.model.Bill import Bill
 from books.model.Expense import Expense
 from books.model.Invoice import Invoice

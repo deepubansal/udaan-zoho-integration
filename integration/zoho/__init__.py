@@ -3,10 +3,7 @@ from books.exception.BooksException import BooksException
 from httplib2 import Http
 from books.util import ZohoHttpClient
 import pathlib
-import json
-import os
-from zoho.core.constants import *
-
+from integration.zoho.core.constants import *
 
 home = pathlib.Path(os.environ.get('UDAAN_HOME', '/tmp'))
 
@@ -25,10 +22,25 @@ def refresh_token(request_data):
     return json.loads(content)['access_token']
 
 
+def dump_to_json_file(json_file, data):
+    path = home / json_file
+    with open(path, mode='w', encoding='utf-8') as f:
+        json.dump(data, f, default=lambda x:  x.to_json() if 'to_json' in dir(x) else x.__dict__)
+
+
+def read_json_file(json_file, default=[]):
+    path = home / json_file
+    if not os.path.exists(path):
+        with open(path, mode='w', encoding='utf-8') as f:
+            json.dump(default, f)
+    with open(path, 'r') as f:
+        data = json.load(f)
+    return data
+
+
 def get_credentials():
-    secret_file = pathlib.Path(__file__).parent / 'secret_file.json'
-    with open(secret_file, 'r') as f:
-        auth_data = json.load(f)
+    secret_file = 'secret_file.json'
+    auth_data = read_json_file(secret_file, default={})
     try:
         organization_id = read_organization_id(auth_data['access_token'])
     except BooksException as e:
@@ -36,8 +48,7 @@ def get_credentials():
             print("Token Expired. Refreshing !")
             auth_data['access_token'] = refresh_token(auth_data['refresh_token_req'])
             organization_id = read_organization_id(auth_data['access_token'])
-            with open(secret_file, mode='w', encoding='utf-8') as f:
-                json.dump(auth_data, f)
+            dump_to_json_file(secret_file, auth_data)
         else:
             raise e
     return auth_data['access_token'], organization_id
@@ -119,21 +130,6 @@ def find_all_items(cached=True):
     return all_items
 
 
-def dump_to_json_file(json_file, data):
-    path = home / json_file
-    with open(path, mode='w', encoding='utf-8') as f:
-        json.dump(data, f, default=lambda x:  x.to_json() if 'to_json' in dir(x) else x.__dict__)
-
-
-def read_json_file(json_file):
-    path = home / json_file
-    if not os.path.exists(path):
-        with open(path, mode='w', encoding='utf-8') as f:
-            json.dump([], f)
-    with open(path, 'r') as f:
-        data = json.load(f)
-    return data
-
-
-if __name__ == '__main__':
-    find_all_contacts(cached=True)
+#
+# if __name__ == '__main__':
+#     find_all_contacts(cached=False)

@@ -3,5 +3,4 @@ venv/
 *.pyc
 secret_file.json
 
-core/set_env.py
-zoho/core/constants.py
+integration/core/set_env.py

@@ -1,7 +1,7 @@
 import urllib.request, urllib.error, urllib.parse
 from datetime import datetime, timedelta
-from udaan import get_session_cookie
-from core import home
+from integration.udaan import get_session_cookie
+from integration import home
 import csv
 
 

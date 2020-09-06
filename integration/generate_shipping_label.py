@@ -1,5 +1,5 @@
-from zoho.invoicing.generate_rts_file import generate_files
-from udaan.orders.upload_rts import upload_and_start_shipping_label_job
+from integration.zoho.invoicing.generate_rts_file import generate_files
+from integration.udaan.orders.upload_rts import upload_and_start_shipping_label_job
 
 
 def generate(invoice_number):

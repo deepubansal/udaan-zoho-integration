@@ -1,7 +1,7 @@
 from books.model.Invoice import Invoice
 from books.model.CustomField import CustomField
 from books.model.LineItem import LineItem
-from zoho import *
+from integration.zoho import *
 
 invoice_api = zoho_books.get_invoices_api()
 

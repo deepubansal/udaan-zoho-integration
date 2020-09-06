@@ -1,6 +1,6 @@
-from zoho.payments.invoice_payments_excel_generator import read_settlements, read_rto_sheet, read_payments_sheet,\
+from integration.zoho.payments.invoice_payments_excel_generator import read_settlements, read_rto_sheet, read_payments_sheet,\
     read_reversal_sheet, read_platform_charges_sheet, read_advertisement_charges_sheet, read_logistics_charges_sheet, read_other_charges, read_approved_refund_sheet
-from zoho.core.api_helpers import *
+from integration.zoho.core.api_helpers import *
 
 
 def settle_negative_adjustment(settlement):
