@@ -36,7 +36,7 @@ def download_orders(past_x_days, status='SELLER_ORDER_PAYMENT_RECEIVED'):
     for h in list(headers.keys()):
         req.add_header(h, headers[h])
     print(qs)
-    output_file = home + '/new-orders-{}.csv'.format(status)
+    output_file = home / 'new-orders-{}.csv'.format(status)
     retries = 3
     while retries > 0:
         try:
