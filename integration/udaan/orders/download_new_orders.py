@@ -118,5 +118,3 @@ def download_orders_all_status(past_x_days):
     for status in all_statuses:
         files[status] = download_orders(past_x_days, status)
     return files
-
-fetch_orders(10)
