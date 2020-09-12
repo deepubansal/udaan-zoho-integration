@@ -5,7 +5,8 @@ from integration import home
 import csv
 
 
-headers = {'accept-encoding': 'gzip', 'cookie': 's={}'.format(get_session_cookie())}
+headers = {'user-agent': 'Udaan-Android-App/8541 3.8/558 (5.0.2;Android) (motorola;MSM8226;;XT1068;)',
+           'cookie': 's={}'.format(get_session_cookie())}
 
 
 class OrderItem(object):
@@ -118,3 +119,4 @@ def download_orders_all_status(past_x_days):
         files[status] = download_orders(past_x_days, status)
     return files
 
+fetch_orders(10)
