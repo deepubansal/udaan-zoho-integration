@@ -3,7 +3,9 @@ from books.exception.BooksException import BooksException
 from httplib2 import Http
 from books.util import ZohoHttpClient
 import pathlib
-from integration.zoho.core.constants import *
+import json
+import os
+
 
 home = pathlib.Path(os.environ.get('UDAAN_HOME', '/tmp'))
 
