@@ -62,7 +62,7 @@ def generate_file(invoice_number, output_path='shipping_label.xlsx'):
             row.append(get_custom_field_value(invoice, 'Total Weight', 5))
         sheet.append(row)
     book.save(home/output_path)
-    return output_path
+    return home/output_path
 
 
 def generate_files(invoice_number):
