@@ -3,7 +3,7 @@ from openpyxl import Workbook
 from datetime import datetime
 
 
-excel_header = ["Date", "Order-Id", "Buyer Org Name", "Buyer Ph Num", "Buyer GSTIN", "Fulfill", "Order Line Id", "ListingId", "Product Id", "Product Title","Is A Set","Size of Set","Hsn","Cess %","Gst %","Total Units","Unit Of Measurement","Unit Price (Rs.) (Inclusive Taxes)","Invoice Id","No. of Boxes","Total weight of Boxes (Kg)","Order Notes"]
+excel_header = ["Date", "Order-Id", "Buyer Org Name", "Buyer Ph Num", "Buyer GSTIN", "Fulfill", "Order Line Id", "ListingId", "Product Id", "Product Title","Is A Set","Size of Set","Hsn","Cess %","Gst %","Total Units","Unit Of Measurement","Unit Price (Rs.) (Inclusive Taxes)","Invoice Id","No. of Boxes","Total weight of Boxes (Kg)","Order Notes", "Length of boxes in cms (box 1, box 2, ..)", "Breadth of boxes in cms (box 1, box 2, ..)", "Height of boxes in cms (box 1, box 2, ..)"]
 
 invoice_api = zoho_books.get_invoices_api()
 
