@@ -60,6 +60,10 @@ def generate_file(invoice_number, output_path='shipping_label.xlsx'):
             first = False
             row.append(get_custom_field_value(invoice, 'No of Boxes', 1))
             row.append(get_custom_field_value(invoice, 'Total Weight', 5))
+            row.append('')
+            row.append(get_custom_field_value(invoice, 'Lengths Of Boxes', 20))
+            row.append(get_custom_field_value(invoice, 'Breadths Of Boxes', 20))
+            row.append(get_custom_field_value(invoice, 'Heights Of Boxes', 20))
         sheet.append(row)
     book.save(home/output_path)
     return home/output_path
